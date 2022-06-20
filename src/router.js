@@ -4,14 +4,16 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/coaches' },
-    { path: '/coaches', component: null },
+    { path: '/coaches', component: './pages/coaches/CoachesList.vue' },
     {
       path: '/coaches/:id',
-      component: null,
-      children: [{ path: 'contact', component: null }],
+      component: './pages/coaches/CoachDetails.vue',
+      children: [
+        { path: 'contact', component: './pages/requests/ContactCoach.vue' },
+      ],
     },
-    { path: '/register', component: null },
-    { path: '/requests', component: null },
+    { path: '/register', component: './pages/coaches/CoachRegistration.vue' },
+    { path: '/requests', component: './pages/requests/RequestsReceived.vue' },
     { path: '/:notFound(.*)', component: './pages/NotFound.vue' },
   ],
 });
