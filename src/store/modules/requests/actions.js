@@ -25,9 +25,11 @@ export default {
     context.commit('addRequest', newRequest);
   },
   async fetchRequests(context) {
+    const token = context.rootGetters.token;
     const coachId = context.rootGetters.userId;
     const response = await fetch(
-      `https://vue-http-demo-4ce97-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`
+      `https://vue-http-demo-4ce97-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json?auth=` +
+        token
     );
     const responseData = await response.json();
 
